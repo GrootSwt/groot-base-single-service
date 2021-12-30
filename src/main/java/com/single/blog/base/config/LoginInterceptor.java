@@ -36,31 +36,40 @@ public class LoginInterceptor implements HandlerInterceptor {
                 }
             }
             if (accountName == null || "".equals(accountName)) {
-                this.setFailureResponse(response);
+                this.setFailureResponse(response, "未授权，请登录");
                 return false;
             }
             if (token == null || "".equals(token)) {
-                this.setFailureResponse(response);
+                this.setFailureResponse(response, "未授权，请登录");
                 return false;
             }
             String redisToken = stringRedisTemplate.opsForValue().get(accountName);
-            if (redisToken != null && redisToken.equals(token)) {
-                Long expire = stringRedisTemplate.getExpire(accountName, TimeUnit.MINUTES);
-                if (expire != null && expire < 5L) {
-                    stringRedisTemplate.opsForValue().set(accountName, redisToken, expireTime, TimeUnit.MINUTES);
+            if (redisToken != null) {
+                if (redisToken.equals(token)) {
+                    Long expire = stringRedisTemplate.getExpire(accountName, TimeUnit.MINUTES);
+                    if (expire != null && expire < 5L) {
+                        stringRedisTemplate.opsForValue().set(accountName, redisToken, expireTime, TimeUnit.MINUTES);
+                    }
+                    return true;
+                } else {
+                    this.setFailureResponse(response, "该账号已在别处登录！");
+                    return false;
                 }
-                return true;
+            } else {
+                this.setFailureResponse(response, "未授权，请登录");
+                return false;
             }
+        } else {
+            this.setFailureResponse(response, "未授权，请登录");
+            return false;
         }
-        this.setFailureResponse(response);
-        return false;
     }
 
-    private void setFailureResponse(HttpServletResponse response) {
+    private void setFailureResponse(HttpServletResponse response, String message) {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=utf-8");
         try (PrintWriter writer = response.getWriter()) {
-            writer.print(JSON.toJSONString(ResultDTO.unauthorized("未授权，请登录！")));
+            writer.print(JSON.toJSONString(ResultDTO.unauthorized(message)));
             writer.flush();
         } catch (Exception e) {
             throw new BusinessRuntimeException(e.getMessage());
