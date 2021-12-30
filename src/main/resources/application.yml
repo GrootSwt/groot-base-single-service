@@ -1,0 +1,16 @@
+server:
+  port: 8888
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://39.106.49.0:3306/single_blog?serveTimezone=GMT
+    username: root
+    password: 123456
+  redis:
+    host: 39.106.49.0
+    password: swt620523
+  application:
+    name: single-blog
+blog:
+  expireTime: 30
+  rootPath: E://files
