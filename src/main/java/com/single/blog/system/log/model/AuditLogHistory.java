@@ -12,8 +12,8 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @ToString
-@Entity(name = "audit_log")
-public class AuditLog {
+@Entity(name = "audit_log_history")
+public class AuditLogHistory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

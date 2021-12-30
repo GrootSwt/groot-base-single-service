@@ -76,6 +76,7 @@ public class GlobalAuditLog {
             AuditLogDTO auditLogDTO = getAuditLogDTO(joinPoint);
             auditLogDTO.setResponseData(JSON.toJSONString(result));
             auditLogDTO.setSuccess(true);
+            auditLogDTO.setResolved(true);
             auditLogController.addLog(auditLogDTO);
         }
 
@@ -93,6 +94,7 @@ public class GlobalAuditLog {
             AuditLogDTO auditLogDTO = getAuditLogDTO(joinPoint);
             auditLogDTO.setResponseData(JSON.toJSONString(e.getMessage()));
             auditLogDTO.setSuccess(false);
+            auditLogDTO.setResolved(false);
             auditLogController.addLog(auditLogDTO);
         }
 
@@ -148,6 +150,7 @@ public class GlobalAuditLog {
         auditLogDTO.setCreateTime(new Date());
         // 操作成功还是失败
         auditLogDTO.setSuccess(true);
+        auditLogDTO.setResolved(true);
         return auditLogDTO;
     }
 }

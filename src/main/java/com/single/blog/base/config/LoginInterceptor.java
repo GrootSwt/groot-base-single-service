@@ -22,7 +22,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     private Long expireTime;
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         String accountName = null;
         String token = null;
         Cookie[] cookies = request.getCookies();

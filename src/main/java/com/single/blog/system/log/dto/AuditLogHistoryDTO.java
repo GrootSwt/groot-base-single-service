@@ -1,22 +1,21 @@
-package com.single.blog.system.log.model;
+package com.single.blog.system.log.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.*;
 import java.util.Date;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
-@Entity(name = "audit_log")
-public class AuditLog {
+public class AuditLogHistoryDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    /**
+     * 主键
+     */
     private Long id;
 
     /**
@@ -40,7 +39,7 @@ public class AuditLog {
     private String email;
 
     /**
-     * 请求方法名
+     * 方法名
      */
     private String methodName;
 
@@ -55,23 +54,22 @@ public class AuditLog {
     private String fullClassName;
 
     /**
-     * 请求数据
+     * 请求参数
      */
     private String requestData;
 
     /**
      * 请求路径
      */
-    @Column(name = "request_uri")
     private String requestURI;
 
     /**
-     * 请求方式
+     * 请求方法
      */
     private String requestMethod;
 
     /**
-     * 响应数据
+     * 响应数据、异常数据
      */
     private String responseData;
 

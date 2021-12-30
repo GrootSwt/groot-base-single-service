@@ -87,4 +87,9 @@ public class AuditLogDTO {
      * 请求响应是否成功
      */
     private Boolean success;
+
+    /**
+     * 解决状态（false：未解决；true：已解决）
+     */
+    private Boolean resolved;
 }
