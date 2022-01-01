@@ -4,6 +4,7 @@ import com.blog.system.log.model.AuditLog;
 import com.blog.system.log.model.AuditLogHistory;
 import com.blog.system.log.repository.AuditLogHistoryRepository;
 import com.blog.system.log.repository.AuditLogRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@Slf4j
 public class TransferLogTask {
 
     @Resource
@@ -28,6 +30,7 @@ public class TransferLogTask {
     @Scheduled(cron = "0 0 2 1 * *")
     @Transactional(rollbackFor = Exception.class)
     public void transferLog() {
+        log.info("日志转移开始");
         List<AuditLog> auditLogs = auditLogRepository.getAllByResolved(true);
         List<AuditLogHistory> auditLogHistories = new ArrayList<>();
         List<Long> ids = new ArrayList<>();
@@ -39,6 +42,7 @@ public class TransferLogTask {
         });
         auditLogHistoryRepository.saveAll(auditLogHistories);
         auditLogRepository.deleteAllByIdIn(ids);
+        log.info("日志转移结束");
     }
 
 }

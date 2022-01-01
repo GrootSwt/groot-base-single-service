@@ -57,6 +57,7 @@ public class AuditLog {
     /**
      * 请求数据
      */
+    @Column(columnDefinition = "text")
     private String requestData;
 
     /**
@@ -73,6 +74,7 @@ public class AuditLog {
     /**
      * 响应数据
      */
+    @Column(columnDefinition = "text")
     private String responseData;
 
     /**
