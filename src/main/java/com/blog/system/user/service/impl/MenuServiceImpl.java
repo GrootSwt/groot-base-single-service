@@ -33,8 +33,10 @@ public class MenuServiceImpl implements MenuService {
     public List<MenuDTO> getMapMenus(boolean isAll) {
         List<Menu> allMenuList;
         if (isAll) {
+            // 查询菜单和权限
             allMenuList = menuRepository.findAllByOrderBySort();
         } else {
+            // 查询所有菜单
             allMenuList = menuRepository.findAllByTypeOrderBySort("1");
         }
 
@@ -63,9 +65,6 @@ public class MenuServiceImpl implements MenuService {
     }
 
     public List<MenuDTO> getMapMenusByRoleId(Long roleId) {
-        if (roleId.equals(1L)) {
-            return this.getMapMenus(false);
-        }
         List<RoleRelationMenu> allByRoleId = roleRelationMenuRepository.findAllByRoleId(roleId);
         List<Long> roleIds = new ArrayList<>();
         allByRoleId.forEach(roleRelationMenu -> {
@@ -126,23 +125,14 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public List<String> getAuthorityByRoleId(Long roleId) {
         List<String> authorities = new ArrayList<>();
-        // 如果是超级用户角色
-        if (roleId == 1L) {
-            // 查询所有权限
-            List<Menu> menuList = menuRepository.findAllByTypeOrderBySort("2");
-            for (Menu menu : menuList) {
-                authorities.add(menu.getLocation());
-            }
-        } else {
-            List<RoleRelationMenu> roleRelationMenus = roleRelationMenuRepository.findAllByRoleId(roleId);
-            List<Long> menuIds = new ArrayList<>();
-            for (RoleRelationMenu roleRelationMenu : roleRelationMenus) {
-                menuIds.add(roleRelationMenu.getMenuId());
-            }
-            List<Menu> menuList = menuRepository.findAllByIdInAndEnabledAndTypeOrderBySort(menuIds, "1", "2");
-            for (Menu menu : menuList) {
-                authorities.add(menu.getLocation());
-            }
+        List<RoleRelationMenu> roleRelationMenus = roleRelationMenuRepository.findAllByRoleId(roleId);
+        List<Long> menuIds = new ArrayList<>();
+        for (RoleRelationMenu roleRelationMenu : roleRelationMenus) {
+            menuIds.add(roleRelationMenu.getMenuId());
+        }
+        List<Menu> menuList = menuRepository.findAllByIdInAndEnabledAndTypeOrderBySort(menuIds, "1", "2");
+        for (Menu menu : menuList) {
+            authorities.add(menu.getLocation());
         }
         return authorities;
     }
