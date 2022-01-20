@@ -57,6 +57,7 @@ public class AuditLogHistory {
     /**
      * 请求数据
      */
+    @Column(columnDefinition = "text")
     private String requestData;
 
     /**
@@ -73,6 +74,7 @@ public class AuditLogHistory {
     /**
      * 响应数据
      */
+    @Column(columnDefinition = "text")
     private String responseData;
 
     /**
