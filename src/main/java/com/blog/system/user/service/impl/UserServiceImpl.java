@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService {
 
     private void generateToken(User registerUser, LoginBean bean) {
         String token = UUID.randomUUID().toString().replaceAll("-", "");
-        stringRedisTemplate.opsForValue().set(registerUser.getLoginName(), token, expireTime, TimeUnit.MINUTES);
+        stringRedisTemplate.opsForValue().set(token, registerUser.getLoginName(), expireTime, TimeUnit.MINUTES);
         bean.setToken(token);
         bean.setAccountName(registerUser.getLoginName());
         bean.setUserInfo(registerUser);

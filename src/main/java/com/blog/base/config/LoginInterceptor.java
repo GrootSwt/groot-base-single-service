@@ -35,20 +35,16 @@ public class LoginInterceptor implements HandlerInterceptor {
                     token = cookie.getValue();
                 }
             }
-            if (accountName == null || "".equals(accountName)) {
+            if (accountName == null || token == null ||"".equals(accountName) || "".equals(token)) {
                 this.setFailureResponse(response, "未授权，请登录");
                 return false;
             }
-            if (token == null || "".equals(token)) {
-                this.setFailureResponse(response, "未授权，请登录");
-                return false;
-            }
-            String redisToken = stringRedisTemplate.opsForValue().get(accountName);
+            String redisToken = stringRedisTemplate.opsForValue().get(token);
             if (redisToken != null) {
-                if (redisToken.equals(token)) {
-                    Long expire = stringRedisTemplate.getExpire(accountName, TimeUnit.MINUTES);
+                if (redisToken.equals(accountName)) {
+                    Long expire = stringRedisTemplate.getExpire(token, TimeUnit.MINUTES);
                     if (expire != null && expire < 5L) {
-                        stringRedisTemplate.opsForValue().set(accountName, redisToken, expireTime, TimeUnit.MINUTES);
+                        stringRedisTemplate.opsForValue().set(token, redisToken, expireTime, TimeUnit.MINUTES);
                     }
                     return true;
                 } else {
