@@ -72,4 +72,12 @@ public interface MenuService {
      * @return 操作权限列表
      */
     List<String> getAuthorityByRoleId(Long roleId);
+
+    /**
+     * 判断将要新增的路径是否存在
+     *
+     * @param path 新增路径
+     * @return 是否存在
+     */
+    boolean pathIsExist(String path);
 }

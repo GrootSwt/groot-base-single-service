@@ -1,7 +1,6 @@
 package com.blog.system.user.service.impl;
 
 
-import com.blog.system.user.service.MenuService;
 import com.blog.base.bean.SearchData;
 import com.blog.base.exception.BusinessRuntimeException;
 import com.blog.system.user.convertor.MenuConvertor;
@@ -10,6 +9,7 @@ import com.blog.system.user.model.Menu;
 import com.blog.system.user.model.RoleRelationMenu;
 import com.blog.system.user.repository.MenuRepository;
 import com.blog.system.user.repository.RoleRelationMenuRepository;
+import com.blog.system.user.service.MenuService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -67,9 +67,7 @@ public class MenuServiceImpl implements MenuService {
     public List<MenuDTO> getMapMenusByRoleId(Long roleId) {
         List<RoleRelationMenu> allByRoleId = roleRelationMenuRepository.findAllByRoleId(roleId);
         List<Long> roleIds = new ArrayList<>();
-        allByRoleId.forEach(roleRelationMenu -> {
-            roleIds.add(roleRelationMenu.getMenuId());
-        });
+        allByRoleId.forEach(roleRelationMenu -> roleIds.add(roleRelationMenu.getMenuId()));
         List<Menu> menuList = menuRepository.findAllByIdInAndEnabledAndTypeOrderBySort(roleIds, "1", "1");
         List<MenuDTO> menuDTOList = menuConvertor.toListDTO(menuList);
         MenuDTO menuDTO = new MenuDTO();
@@ -135,5 +133,11 @@ public class MenuServiceImpl implements MenuService {
             authorities.add(menu.getLocation());
         }
         return authorities;
+    }
+
+    @Override
+    public boolean pathIsExist(String path) {
+        Menu menu = menuRepository.findFirstByLocation(path);
+        return menu != null;
     }
 }

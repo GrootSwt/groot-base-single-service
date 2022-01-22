@@ -65,4 +65,6 @@ public interface MenuRepository extends JpaRepository<Menu, Long>, MenuRepositor
      * @return 子菜单列表
      */
     List<Menu> findAllByParentIdOrderBySort(Long parentId);
+
+    Menu findFirstByLocation(String location);
 }

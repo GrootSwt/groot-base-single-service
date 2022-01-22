@@ -136,4 +136,17 @@ public class MenuController {
         List<String> authorities = menuService.getAuthorityByRoleId(roleId);
         return ResultListDTO.success("获取权限成功！", authorities);
     }
+
+    /**
+     * 判断将要新增的路径是否存在
+     *
+     * @param path 新增路径
+     * @return 是否存在
+     */
+    @ApiOperation(value = "判断该路径是否已经存在")
+    @GetMapping(value = "pathIsExist")
+    public ResultDTO<Boolean> pathIsExist(@RequestParam String path) {
+        boolean exist = menuService.pathIsExist(path);
+        return ResultDTO.success("获取路径是否存在操作成功！", exist);
+    }
 }
