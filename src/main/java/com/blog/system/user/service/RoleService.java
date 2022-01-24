@@ -70,4 +70,12 @@ public interface RoleService {
      * @param toModel 角色id和角色enabled
      */
     void changeRoleEnabled(Role toModel);
+
+    /**
+     * 获取新增角色名是否存在
+     *
+     * @param roleName 角色名
+     * @return 角色名是否存在
+     */
+    Boolean roleNameIsExist(String roleName);
 }

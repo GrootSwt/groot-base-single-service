@@ -9,10 +9,7 @@ import com.blog.system.user.service.UserService;
 import com.blog.system.user.dto.UserDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -44,9 +41,9 @@ public class LoginController {
     }
 
     @ApiOperation(value = "登出")
-    @GetMapping(value = "logout")
-    public ResultDTO<Void> logout() {
-        userService.logout();
+    @GetMapping(value = "{token}/logout")
+    public ResultDTO<Void> logout(@PathVariable String token) {
+        userService.logout(token);
         return ResultDTO.success("已退出！");
     }
 

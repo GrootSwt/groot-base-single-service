@@ -101,5 +101,11 @@ public interface UserService {
      */
     User modifyAvatar(User toModel);
 
-    void logout();
+    void logout(String token);
+
+    boolean loginNameIsExist(String loginName);
+
+    boolean phoneNumberIsExist(String phoneNumber);
+
+    boolean emailIsExist(String email);
 }

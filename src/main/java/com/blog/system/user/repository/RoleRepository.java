@@ -13,6 +13,11 @@ public interface RoleRepository extends JpaRepository<Role, Long>, RoleRepositor
      */
     Role findFirstById(Long roleId);
 
-
-
+    /**
+     * 获取第一个角色名相同的角色
+     *
+     * @param roleName 角色名
+     * @return 角色
+     */
+    Role findFirstByName(String roleName);
 }

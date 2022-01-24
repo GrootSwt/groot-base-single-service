@@ -120,4 +120,16 @@ public class RoleController {
         roleService.changeRoleEnabled(roleConvertor.toModel(roleDTO));
         return ResultDTO.success("更改角色状态成功！");
     }
+
+    /**
+     * 获取新增角色名是否存在
+     *
+     * @param roleName 角色名
+     * @return 角色名是否存在
+     */
+    @ApiOperation(value = "获取新增角色名是否存在")
+    @GetMapping(value = "{roleName}/roleNameIsExist")
+    public ResultDTO<Boolean> roleNameIsExist(@PathVariable String roleName) {
+        return ResultDTO.success("获取新增角色名是否存在操作成功！", roleService.roleNameIsExist(roleName));
+    }
 }

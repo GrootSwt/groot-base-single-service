@@ -2,6 +2,7 @@ package com.blog.base.config;
 
 import com.blog.base.bean.result.ResultDTO;
 import com.blog.base.exception.BusinessRuntimeException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @ControllerAdvice
 @RestController
+@Slf4j
 public class GlobalExceptionHandler {
     /**
      * 全局异常处理器
@@ -20,7 +22,6 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = Exception.class)
     public ResultDTO<Void> exceptionHandler(Exception e) {
-        e.printStackTrace();
         if (e instanceof BusinessRuntimeException) {
             return ResultDTO.failure(e.getMessage());
         }

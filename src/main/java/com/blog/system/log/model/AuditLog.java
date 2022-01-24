@@ -96,4 +96,9 @@ public class AuditLog {
      * 解决状态（false：未解决；true：已解决）
      */
     private Boolean resolved;
+
+    /**
+     * ip
+     */
+    private String ip;
 }

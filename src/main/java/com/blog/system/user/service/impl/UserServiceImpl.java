@@ -4,7 +4,6 @@ import com.blog.base.bean.SearchData;
 import com.blog.base.bean.result.ResultDTO;
 import com.blog.base.bean.result.ResultPageDTO;
 import com.blog.base.exception.BusinessRuntimeException;
-import com.blog.base.util.LoginUserInfoUtil;
 import com.blog.system.user.bean.ChangePasswordBean;
 import com.blog.system.user.bean.LoginBean;
 import com.blog.system.user.convertor.UserConvertor;
@@ -168,9 +167,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void logout() {
+    public void logout(String token) {
         // 删除登录用户信息
-        stringRedisTemplate.delete(LoginUserInfoUtil.getOperatorInfo().getLoginName());
+        stringRedisTemplate.delete(token);
+    }
+
+    @Override
+    public boolean loginNameIsExist(String loginName) {
+        return userRepository.findFirstByLoginName(loginName) != null;
+    }
+
+    @Override
+    public boolean phoneNumberIsExist(String phoneNumber) {
+        return userRepository.findFirstByPhoneNumber(phoneNumber) != null;
+    }
+
+    @Override
+    public boolean emailIsExist(String email) {
+        return userRepository.findFirstByEmail(email) != null;
     }
 
     /**

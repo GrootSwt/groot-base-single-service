@@ -48,4 +48,11 @@ public interface UserRepository extends JpaRepository<User, Long>, UserRepositor
      */
     User findFirstByRoleId(Long roleId);
 
+
+    User findFirstByLoginName(String loginName);
+
+    User findFirstByPhoneNumber(String phoneNumber);
+
+    User findFirstByEmail(String email);
+
 }

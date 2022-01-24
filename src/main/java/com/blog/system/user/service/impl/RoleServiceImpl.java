@@ -114,4 +114,10 @@ public class RoleServiceImpl implements RoleService {
         }
         roleRepository.changeRoleEnabled(toModel);
     }
+
+    @Override
+    public Boolean roleNameIsExist(String roleName) {
+        Role role = roleRepository.findFirstByName(roleName);
+        return role != null;
+    }
 }

@@ -78,6 +78,7 @@ public class GlobalAuditLog {
             auditLogDTO.setSuccess(true);
             auditLogDTO.setResolved(true);
             auditLogController.addLog(auditLogDTO);
+            log.info(JSON.toJSONString(auditLogDTO));
         }
 
     }
@@ -96,6 +97,7 @@ public class GlobalAuditLog {
             auditLogDTO.setSuccess(false);
             auditLogDTO.setResolved(false);
             auditLogController.addLog(auditLogDTO);
+            log.error(JSON.toJSONString(auditLogDTO));
         }
 
     }
@@ -148,9 +150,29 @@ public class GlobalAuditLog {
         auditLogDTO.setRequestMethod(requestMethod);
         // 日志创建时间
         auditLogDTO.setCreateTime(new Date());
-        // 操作成功还是失败
-        auditLogDTO.setSuccess(true);
-        auditLogDTO.setResolved(true);
+        // 获取IP
+        auditLogDTO.setIp(getIpAddress(request));
         return auditLogDTO;
+    }
+
+
+    private static String getIpAddress(HttpServletRequest request) {
+        String ip = request.getHeader("x-forwarded-for");
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("WL-Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("HTTP_CLIENT_IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("HTTP_X_FORWARDED_FOR");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getRemoteAddr();
+        }
+        return ip;
     }
 }
