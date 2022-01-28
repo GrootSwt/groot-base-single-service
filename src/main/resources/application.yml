@@ -14,12 +14,24 @@ spring:
   redis:
     host: 39.106.49.0
     password: swt620523
+  rabbitmq:
+    host: 39.106.49.0
+    password: swt620523
+    username: admin
+    port: 5672
   application:
     name: single-blog
-blog:
-  # 日志定时传输时间
-  transferTime: "0 0 2 1 * *"
-  # redis中用户token过期时间（min）
-  expireTime: 30
-  # 文件根目录
-  rootPath: E://files
+
+groot:
+  swagger:
+    base-package: com.blog
+  rabbit-mq:
+    exchange-name: single-blog
+    queue-name: single-blog
+    routing-key: single-blog
+  login:
+    # redis中用户token过期时间（min）
+    expire-time: 30
+  file:
+    # 文件根目录
+    root-path: E://files

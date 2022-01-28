@@ -1,8 +1,8 @@
 package com.blog.system.user.service;
 
 
-import com.blog.base.bean.SearchData;
 import com.blog.system.user.model.Role;
+import com.groot.base.common.SearchData;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

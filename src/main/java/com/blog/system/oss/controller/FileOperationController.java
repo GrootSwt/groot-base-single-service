@@ -1,11 +1,11 @@
 package com.blog.system.oss.controller;
 
-import com.blog.base.bean.result.ResultDTO;
-import com.blog.base.bean.result.ResultListDTO;
 import com.blog.system.oss.convertor.FileInfoConvertor;
 import com.blog.system.oss.dto.FileInfoDTO;
 import com.blog.system.oss.model.FileInfo;
 import com.blog.system.oss.service.FileOperationService;
+import com.groot.base.web.bean.result.ResultDTO;
+import com.groot.base.web.bean.result.ResultListDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;

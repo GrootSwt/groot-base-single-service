@@ -1,10 +1,10 @@
 package com.blog.system.oss.repository.impl;
 
 
-import com.blog.base.repository.BaseRepository;
 import com.blog.system.oss.model.FileInfo;
 import com.blog.system.oss.model.QFileInfo;
 import com.blog.system.oss.repository.FileInfoRepositoryCustom;
+import com.groot.base.web.repository.BaseRepository;
 
 import java.util.List;
 

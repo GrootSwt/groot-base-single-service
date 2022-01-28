@@ -1,13 +1,13 @@
 package com.blog.system.dict.repository.impl;
 
 
-import com.querydsl.core.BooleanBuilder;
-import com.querydsl.jpa.impl.JPAQuery;
-import com.blog.base.bean.SearchData;
-import com.blog.base.repository.BaseRepository;
 import com.blog.system.dict.model.DictionaryCategory;
 import com.blog.system.dict.model.QDictionaryCategory;
 import com.blog.system.dict.repository.DictionaryCategoryRepositoryCustom;
+import com.groot.base.common.SearchData;
+import com.groot.base.web.repository.BaseRepository;
+import com.querydsl.core.BooleanBuilder;
+import com.querydsl.jpa.impl.JPAQuery;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

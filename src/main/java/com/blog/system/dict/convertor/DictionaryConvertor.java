@@ -1,8 +1,8 @@
 package com.blog.system.dict.convertor;
 
-import com.blog.base.convertor.BaseConvertor;
 import com.blog.system.dict.dto.DictionaryDTO;
 import com.blog.system.dict.model.Dictionary;
+import com.groot.base.web.convertor.BaseConvertor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 

@@ -1,8 +1,8 @@
 package com.blog.system.oss.convertor;
 
-import com.blog.base.convertor.BaseConvertor;
 import com.blog.system.oss.dto.FileInfoDTO;
 import com.blog.system.oss.model.FileInfo;
+import com.groot.base.web.convertor.BaseConvertor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 

@@ -1,10 +1,10 @@
 package com.blog.system.log.service.impl;
 
 
-import com.blog.base.bean.SearchData;
 import com.blog.system.log.model.AuditLog;
 import com.blog.system.log.repository.AuditLogRepository;
 import com.blog.system.log.service.AuditLogService;
+import com.groot.base.common.SearchData;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

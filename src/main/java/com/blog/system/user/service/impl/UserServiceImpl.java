@@ -1,9 +1,5 @@
 package com.blog.system.user.service.impl;
 
-import com.blog.base.bean.SearchData;
-import com.blog.base.bean.result.ResultDTO;
-import com.blog.base.bean.result.ResultPageDTO;
-import com.blog.base.exception.BusinessRuntimeException;
 import com.blog.system.user.bean.ChangePasswordBean;
 import com.blog.system.user.bean.LoginBean;
 import com.blog.system.user.convertor.UserConvertor;
@@ -13,6 +9,10 @@ import com.blog.system.user.model.User;
 import com.blog.system.user.repository.RoleRepository;
 import com.blog.system.user.repository.UserRepository;
 import com.blog.system.user.service.UserService;
+import com.groot.base.common.SearchData;
+import com.groot.base.web.bean.result.ResultDTO;
+import com.groot.base.web.bean.result.ResultPageDTO;
+import com.groot.base.web.exception.BusinessRuntimeException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -32,7 +32,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Value(value = "${blog.expireTime}")
+    @Value(value = "${groot.login.expire-time}")
     private Integer expireTime;
 
     @Resource

@@ -1,9 +1,9 @@
 package com.blog.system.user.convertor;
 
 
-import com.blog.base.convertor.BaseConvertor;
 import com.blog.system.user.dto.MenuDTO;
 import com.blog.system.user.model.Menu;
+import com.groot.base.web.convertor.BaseConvertor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 

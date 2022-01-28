@@ -1,13 +1,15 @@
 package com.blog;
 
+import com.groot.base.log.annotation.EnableAuditLog;
+import com.groot.base.web.annotation.EnableBaseWeb;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableScheduling
-@EnableSwagger2
+@EnableBaseWeb
+@EnableAuditLog
 public class SingleBlogApplication {
 
     public static void main(String[] args) {

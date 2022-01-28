@@ -1,13 +1,13 @@
 package com.blog.system.dict.controller;
 
 
-import com.blog.base.bean.SearchData;
-import com.blog.base.bean.result.ResultDTO;
-import com.blog.base.bean.result.ResultPageDTO;
 import com.blog.system.dict.convertor.DictionaryCategoryConvertor;
 import com.blog.system.dict.dto.DictionaryCategoryDTO;
 import com.blog.system.dict.model.DictionaryCategory;
 import com.blog.system.dict.service.DictionaryCategoryService;
+import com.groot.base.common.SearchData;
+import com.groot.base.web.bean.result.ResultDTO;
+import com.groot.base.web.bean.result.ResultPageDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.data.domain.Page;

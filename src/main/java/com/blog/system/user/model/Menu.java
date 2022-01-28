@@ -1,11 +1,9 @@
 package com.blog.system.user.model;
 
+import com.groot.base.web.bean.model.BaseModel;
 import lombok.*;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 /**
  * 菜单、权限
@@ -16,10 +14,8 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Menu {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Menu extends BaseModel {
+
     /**
      * 菜单、权限名
      */

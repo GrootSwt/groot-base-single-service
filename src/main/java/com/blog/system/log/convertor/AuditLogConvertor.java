@@ -1,9 +1,9 @@
 package com.blog.system.log.convertor;
 
 
-import com.blog.base.convertor.BaseConvertor;
 import com.blog.system.log.dto.AuditLogDTO;
 import com.blog.system.log.model.AuditLog;
+import com.groot.base.web.convertor.BaseConvertor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 

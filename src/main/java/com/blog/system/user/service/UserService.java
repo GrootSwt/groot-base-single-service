@@ -1,13 +1,13 @@
 package com.blog.system.user.service;
 
 
-import com.blog.base.bean.SearchData;
-import com.blog.base.bean.result.ResultDTO;
-import com.blog.base.bean.result.ResultPageDTO;
 import com.blog.system.user.bean.ChangePasswordBean;
 import com.blog.system.user.bean.LoginBean;
 import com.blog.system.user.dto.UserDTO;
 import com.blog.system.user.model.User;
+import com.groot.base.common.SearchData;
+import com.groot.base.web.bean.result.ResultDTO;
+import com.groot.base.web.bean.result.ResultPageDTO;
 import org.springframework.data.domain.Pageable;
 
 import javax.servlet.http.HttpServletResponse;

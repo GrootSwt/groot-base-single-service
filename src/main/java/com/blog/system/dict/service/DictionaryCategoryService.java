@@ -1,7 +1,7 @@
 package com.blog.system.dict.service;
 
-import com.blog.base.bean.SearchData;
 import com.blog.system.dict.model.DictionaryCategory;
+import com.groot.base.common.SearchData;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

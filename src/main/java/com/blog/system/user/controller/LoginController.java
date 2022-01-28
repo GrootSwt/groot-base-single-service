@@ -1,14 +1,16 @@
 package com.blog.system.user.controller;
 
 
-import com.blog.base.bean.result.ResultDTO;
-import com.blog.base.util.LoginUserInfoUtil;
 import com.blog.system.user.bean.LoginBean;
 import com.blog.system.user.convertor.UserConvertor;
-import com.blog.system.user.service.UserService;
 import com.blog.system.user.dto.UserDTO;
+import com.blog.system.user.service.UserService;
+import com.groot.base.common.OperatorInfo;
+import com.groot.base.web.bean.result.ResultDTO;
+import com.groot.base.web.util.LoginUserInfoUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -36,7 +38,9 @@ public class LoginController {
     @PostMapping(value = "login")
     public ResultDTO<LoginBean> login(@RequestBody UserDTO userDTO, HttpServletResponse response) {
         LoginBean bean = userService.login(userConvertor.toModel(userDTO), response);
-        LoginUserInfoUtil.setOperatorInfo(userConvertor.toDTO(bean.getUserInfo()));
+        OperatorInfo info = new OperatorInfo();
+        BeanUtils.copyProperties(userConvertor.toDTO(bean.getUserInfo()), info);
+        LoginUserInfoUtil.setOperatorInfo(info);
         return ResultDTO.success("登录成功！", bean);
     }
 

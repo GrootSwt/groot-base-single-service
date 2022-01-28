@@ -1,10 +1,10 @@
 package com.blog.system.user.repository.impl;
 
 
-import com.blog.base.repository.BaseRepository;
 import com.blog.system.user.model.QRoleRelationMenu;
 import com.blog.system.user.model.RoleRelationMenu;
 import com.blog.system.user.repository.RoleRelationMenuRepositoryCustom;
+import com.groot.base.web.repository.BaseRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

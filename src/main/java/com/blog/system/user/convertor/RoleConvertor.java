@@ -1,8 +1,8 @@
 package com.blog.system.user.convertor;
 
-import com.blog.base.convertor.BaseConvertor;
 import com.blog.system.user.dto.RoleDTO;
 import com.blog.system.user.model.Role;
+import com.groot.base.web.convertor.BaseConvertor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 

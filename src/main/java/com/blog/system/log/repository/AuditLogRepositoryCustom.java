@@ -2,7 +2,7 @@ package com.blog.system.log.repository;
 
 
 import com.blog.system.log.model.AuditLog;
-import com.blog.base.bean.SearchData;
+import com.groot.base.common.SearchData;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

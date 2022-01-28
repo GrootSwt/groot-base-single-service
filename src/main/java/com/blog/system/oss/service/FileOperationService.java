@@ -1,7 +1,7 @@
 package com.blog.system.oss.service;
 
-import com.blog.base.exception.BusinessRuntimeException;
 import com.blog.system.oss.model.FileInfo;
+import com.groot.base.web.exception.BusinessRuntimeException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

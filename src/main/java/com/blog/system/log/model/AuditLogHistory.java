@@ -1,5 +1,6 @@
 package com.blog.system.log.model;
 
+import com.groot.base.web.bean.model.BaseModel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,11 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 @ToString
 @Entity(name = "audit_log_history")
-public class AuditLogHistory {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class AuditLogHistory extends BaseModel {
 
     /**
      * 用户名

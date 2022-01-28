@@ -1,10 +1,10 @@
 package com.blog.system.oss.service.impl;
 
 import cn.hutool.core.io.FileTypeUtil;
-import com.blog.base.exception.BusinessRuntimeException;
 import com.blog.system.oss.model.FileInfo;
 import com.blog.system.oss.repository.FileInfoRepository;
 import com.blog.system.oss.service.FileOperationService;
+import com.groot.base.web.exception.BusinessRuntimeException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MultiValueMap;
@@ -23,7 +23,7 @@ import java.util.*;
 @Service
 public class FileOperationServiceImpl implements FileOperationService {
 
-    @Value(value = "${blog.rootPath}")
+    @Value(value = "${groot.file.root-path}")
     private String fileRootPath;
     @Resource
     private MultipartResolver multipartResolver;

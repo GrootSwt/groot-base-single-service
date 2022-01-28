@@ -1,12 +1,12 @@
 package com.blog.system.log.controller;
 
-import com.blog.base.bean.SearchData;
-import com.blog.base.bean.result.ResultDTO;
-import com.blog.base.bean.result.ResultPageDTO;
 import com.blog.system.log.convertor.AuditLogConvertor;
 import com.blog.system.log.dto.AuditLogDTO;
 import com.blog.system.log.model.AuditLog;
 import com.blog.system.log.service.AuditLogService;
+import com.groot.base.common.SearchData;
+import com.groot.base.web.bean.result.ResultDTO;
+import com.groot.base.web.bean.result.ResultPageDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.data.domain.Page;
