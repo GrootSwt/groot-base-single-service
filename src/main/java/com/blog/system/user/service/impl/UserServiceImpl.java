@@ -111,9 +111,10 @@ public class UserServiceImpl implements UserService {
         if (user.getId() != null) {
             User userModel = userRepository.findFirstById(user.getId());
             user.setPassword(userModel.getPassword());
+        }else {
+            // 密码加密
+            user.setPassword(EncryptionUtil.getMD5(user.getPassword()));
         }
-        // 密码加密
-        user.setPassword(EncryptionUtil.getMD5(user.getPassword()));
         userRepository.save(user);
     }
 
