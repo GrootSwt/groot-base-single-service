@@ -13,6 +13,7 @@ import com.groot.base.common.SearchData;
 import com.groot.base.web.bean.result.ResultDTO;
 import com.groot.base.web.bean.result.ResultPageDTO;
 import com.groot.base.web.exception.BusinessRuntimeException;
+import com.groot.base.web.util.EncryptionUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -61,7 +62,8 @@ public class UserServiceImpl implements UserService {
             throw new BusinessRuntimeException("用户没有注册或账号未启用!");
         }
         // 判断账号密码是否正确
-        if (!registerUser.getLoginName().equals(user.getLoginName()) || !registerUser.getPassword().equals(user.getPassword())) {
+        if (!registerUser.getLoginName().equals(user.getLoginName()) ||
+                !registerUser.getPassword().equals(EncryptionUtil.getMD5(user.getPassword()))) {
             throw new BusinessRuntimeException("账号或密码不正确！");
         }
         LoginBean bean = new LoginBean();
@@ -110,6 +112,8 @@ public class UserServiceImpl implements UserService {
             User userModel = userRepository.findFirstById(user.getId());
             user.setPassword(userModel.getPassword());
         }
+        // 密码加密
+        user.setPassword(EncryptionUtil.getMD5(user.getPassword()));
         userRepository.save(user);
     }
 
@@ -123,7 +127,8 @@ public class UserServiceImpl implements UserService {
     @Transactional(rollbackFor = Exception.class)
     public void changePassword(ChangePasswordBean changePasswordBean) {
         User user = userRepository.findFirstById(changePasswordBean.getId());
-        if (!user.getPassword().equals(changePasswordBean.getOldPassword())) {
+        String oldPassword = EncryptionUtil.getMD5(changePasswordBean.getOldPassword());
+        if (!user.getPassword().equals(oldPassword)) {
             throw new BusinessRuntimeException("原密码错误！");
         }
         userRepository.changePassword(changePasswordBean);
@@ -178,13 +183,29 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean phoneNumberIsExist(String phoneNumber) {
-        return userRepository.findFirstByPhoneNumber(phoneNumber) != null;
+    public boolean phoneNumberIsExist(Long id, String phoneNumber) {
+        User user = userRepository.findFirstByPhoneNumber(phoneNumber);
+        // 编辑时判断id是否相同
+        if (user == null) {
+            return false;
+        }else if (id != null && id.equals(user.getId())) {
+            // 手机号码没做修改，返回校验正确
+            return false;
+        }
+        return true;
     }
 
     @Override
-    public boolean emailIsExist(String email) {
-        return userRepository.findFirstByEmail(email) != null;
+    public boolean emailIsExist(Long id, String email) {
+        User user = userRepository.findFirstByEmail(email);
+        // 编辑时判断id是否相同
+        if (user == null) {
+            return false;
+        }else if (id != null && id.equals(user.getId())) {
+            // 手机号码没做修改，返回校验正确
+            return false;
+        }
+        return true;
     }
 
     /**

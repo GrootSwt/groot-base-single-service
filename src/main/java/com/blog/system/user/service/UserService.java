@@ -105,7 +105,7 @@ public interface UserService {
 
     boolean loginNameIsExist(String loginName);
 
-    boolean phoneNumberIsExist(String phoneNumber);
+    boolean phoneNumberIsExist(Long id, String phoneNumber);
 
-    boolean emailIsExist(String email);
+    boolean emailIsExist(Long id, String email);
 }

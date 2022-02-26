@@ -3,6 +3,7 @@ package com.blog.system.user.model;
 import com.groot.base.web.bean.model.BaseModel;
 import lombok.*;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
@@ -23,6 +24,7 @@ public class User extends BaseModel {
     /**
      * 密码
      */
+    @Column(length = 50)
     private String password;
     /**
      * 登录名

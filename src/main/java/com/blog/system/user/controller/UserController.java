@@ -132,16 +132,16 @@ public class UserController {
     }
 
     @ApiOperation(value = "判断联系方式是否存在")
-    @GetMapping(value = "{phoneNumber}/phoneNumberIsExist")
-    public ResultDTO<Boolean> phoneNumberIsExist(@PathVariable String phoneNumber) {
-        boolean exist = userService.phoneNumberIsExist(phoneNumber);
+    @GetMapping(value = "phoneNumberIsExist")
+    public ResultDTO<Boolean> phoneNumberIsExist(@RequestParam String phoneNumber,@RequestParam(required = false) Long id) {
+        boolean exist = userService.phoneNumberIsExist(id, phoneNumber);
         return ResultDTO.success("获取账号是否存在成功！", exist);
     }
 
     @ApiOperation(value = "判断联系方式是否存在")
-    @GetMapping(value = "{email}/emailIsExist")
-    public ResultDTO<Boolean> emailIsExist(@PathVariable String email) {
-        boolean exist = userService.emailIsExist(email);
+    @GetMapping(value = "emailIsExist")
+    public ResultDTO<Boolean> emailIsExist(@RequestParam String email, @RequestParam(required = false) Long id) {
+        boolean exist = userService.emailIsExist(id, email);
         return ResultDTO.success("获取账号是否存在成功！", exist);
     }
 }
