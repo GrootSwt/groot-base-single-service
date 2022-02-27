@@ -214,7 +214,7 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'admin', '6d3de71a35ad508b729ba1f888265746', 'admin', '17777777777', '17777777777@micro.com', '13', '1', 55);
-INSERT INTO `user` VALUES ('6', 'swt', '6d3de71a35ad508b729ba1f888265746', 'swt', '18888888888', '18888888888@qq.com', '14', '1', 57);
+INSERT INTO `user` VALUES ('1', 'admin', '6d3de71a35ad508b729ba1f888265746', 'admin', '17777777777', '17777777777@micro.com', '13', '1', NULL);
+INSERT INTO `user` VALUES ('6', 'swt', '6d3de71a35ad508b729ba1f888265746', 'swt', '18888888888', '18888888888@qq.com', '14', '1', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
