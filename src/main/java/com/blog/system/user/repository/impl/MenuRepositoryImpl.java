@@ -26,7 +26,7 @@ public class MenuRepositoryImpl extends BaseRepository implements MenuRepository
     }
 
     @Override
-    public void deleteMenuByIdArr(Long[] idArr) {
+    public void deleteMenuByIdArr(String[] idArr) {
         QMenu menu = QMenu.menu;
         queryFactory.delete(menu).where(menu.id.in(idArr)).execute();
     }

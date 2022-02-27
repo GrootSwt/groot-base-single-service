@@ -52,7 +52,7 @@ public class MenuController {
      */
     @ApiOperation(value = "根据角色Id获取菜单列表")
     @GetMapping(value = "{roleId}/getMenuListByRoleId")
-    public ResultListDTO<MenuDTO> getMenuListByRoleId(@PathVariable Long roleId) {
+    public ResultListDTO<MenuDTO> getMenuListByRoleId(@PathVariable String roleId) {
         List<MenuDTO> menuList = menuService.getMapMenusByRoleId(roleId);
         return ResultListDTO.success("根据角色id获取菜单列表成功！", menuList);
     }
@@ -79,7 +79,7 @@ public class MenuController {
      */
     @ApiOperation(value = "根据菜单Id获取菜单")
     @GetMapping(value = "{menuId}/getMenuByMenuId")
-    public ResultDTO<MenuDTO> getMenuByMenuId(@PathVariable Long menuId) {
+    public ResultDTO<MenuDTO> getMenuByMenuId(@PathVariable String menuId) {
         Menu menu = this.menuService.getMenuByMenuId(menuId);
         return ResultDTO.success("根据菜单Id获取菜单成功！", menuConvertor.toDTO(menu));
     }
@@ -108,7 +108,7 @@ public class MenuController {
      */
     @ApiOperation(value = "根据id列表删除菜单")
     @DeleteMapping(value = "deleteMenuByIdArr")
-    public ResultListDTO<MenuDTO> deleteMenuByIdArr(Long[] idArr) {
+    public ResultListDTO<MenuDTO> deleteMenuByIdArr(String[] idArr) {
         menuService.deleteMenuByIdArr(idArr);
         return ResultListDTO.success("删除菜单成功！", menuService.getMapMenus(true));
     }
@@ -133,7 +133,7 @@ public class MenuController {
      */
     @ApiOperation(value = "根据角色id获取权限")
     @GetMapping(value = "{roleId}/getAuthorities")
-    public ResultListDTO<String> getAuthorities(@PathVariable Long roleId) {
+    public ResultListDTO<String> getAuthorities(@PathVariable String roleId) {
         List<String> authorities = menuService.getAuthorityByRoleId(roleId);
         return ResultListDTO.success("获取权限成功！", authorities);
     }

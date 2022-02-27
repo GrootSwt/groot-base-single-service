@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 public interface DictionaryCategoryService {
     void save(DictionaryCategory model);
 
-    void batchDelete(Long[] idArr);
+    void batchDelete(String[] idArr);
 
     Page<DictionaryCategory> pageableSearch(SearchData searchData, Pageable pageable);
 

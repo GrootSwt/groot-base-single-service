@@ -26,7 +26,7 @@ public class DictionaryRepositoryImpl extends BaseRepository implements Dictiona
         QDictionary dictionary = QDictionary.dictionary;
         BooleanBuilder where = new BooleanBuilder();
         if (searchData.hasKey("categoryId")) {
-            where.and(dictionary.categoryId.eq(searchData.getLongValue("categoryId")));
+            where.and(dictionary.categoryId.eq(searchData.getStringValue("categoryId")));
         }
         if (searchData.hasKey("dictionaryKey")) {
             where.and(dictionary.dictionaryKey.like("%" + searchData.getStringValue("dictionaryKey") + "%"));
@@ -61,7 +61,7 @@ public class DictionaryRepositoryImpl extends BaseRepository implements Dictiona
         QDictionary dictionary = QDictionary.dictionary;
         BooleanBuilder where = new BooleanBuilder();
         if (searchData.hasKey("categoryId")) {
-            where.and(dictionary.categoryId.eq(searchData.getLongValue("categoryId")));
+            where.and(dictionary.categoryId.eq(searchData.getStringValue("categoryId")));
         }
         return queryFactory.selectFrom(dictionary).where(where).orderBy(dictionary.createTime.asc()).fetch();
     }

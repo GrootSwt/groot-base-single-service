@@ -51,8 +51,8 @@ public class RoleController {
      */
     @ApiOperation(value = "根据角色Id获取菜单Ids列表")
     @GetMapping(value = "{id}/getMenuIdArrByRoleId")
-    public ResultListDTO<Long> getMenuIdArrByRoleId(@PathVariable Long id) {
-        List<Long> menuIdList = roleService.getMenuIdArrByRoleId(id);
+    public ResultListDTO<String> getMenuIdArrByRoleId(@PathVariable String id) {
+        List<String> menuIdList = roleService.getMenuIdArrByRoleId(id);
         return ResultListDTO.success("根据角色id获取菜单Id列表成功！", menuIdList);
     }
 
@@ -65,7 +65,7 @@ public class RoleController {
      */
     @ApiOperation(value = "角色分配权限")
     @PutMapping(value = "{roleId}/assignPermissions")
-    public ResultDTO<Void> assignPermissions(@PathVariable Long roleId, @RequestBody List<Long> allMenuIds) {
+    public ResultDTO<Void> assignPermissions(@PathVariable String roleId, @RequestBody List<String> allMenuIds) {
         roleService.assignPermissions(roleId, allMenuIds);
         return ResultDTO.success("角色分配权限成功！");
     }
@@ -91,7 +91,7 @@ public class RoleController {
      */
     @ApiOperation(value = "批量删除角色成功")
     @DeleteMapping(value = "batchDeleteByIds")
-    public ResultDTO<Void> batchDeleteByIds(Long[] ids) {
+    public ResultDTO<Void> batchDeleteByIds(String[] ids) {
         roleService.batchDeleteByIds(ids);
         return ResultDTO.success("批量删除角色成功！");
     }

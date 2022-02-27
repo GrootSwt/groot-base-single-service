@@ -16,7 +16,7 @@ public class FileInfoRepositoryImpl extends BaseRepository implements FileInfoRe
 
 
     @Override
-    public List<Long> getFileIdListByFilesId(String filesId) {
+    public List<String> getFileIdListByFilesId(String filesId) {
         QFileInfo fileInfo = QFileInfo.fileInfo;
         return queryFactory.select(fileInfo.id).from(fileInfo).where(fileInfo.filesId.eq(filesId)).fetch();
     }

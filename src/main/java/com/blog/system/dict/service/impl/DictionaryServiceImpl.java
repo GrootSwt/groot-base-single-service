@@ -43,7 +43,7 @@ public class DictionaryServiceImpl implements DictionaryService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void batchDelete(Long[] ids) {
+    public void batchDelete(String[] ids) {
         dictionaryRepository.deleteAllByIdIn(Arrays.asList(ids));
     }
 

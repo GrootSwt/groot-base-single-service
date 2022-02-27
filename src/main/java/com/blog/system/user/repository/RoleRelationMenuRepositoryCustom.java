@@ -10,5 +10,5 @@ public interface RoleRelationMenuRepositoryCustom {
      * @param roleId 角色Id
      * @return 菜单列表Id
      */
-    List<Long> getMenuIdsByRoleId(Long roleId);
+    List<String> getMenuIdsByRoleId(String roleId);
 }

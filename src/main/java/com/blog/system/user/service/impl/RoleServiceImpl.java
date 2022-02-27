@@ -31,7 +31,7 @@ public class RoleServiceImpl implements RoleService {
     private UserRepository userRepository;
 
     @Override
-    public Role findFirstById(Long roleId) {
+    public Role findFirstById(String roleId) {
         return roleRepository.findFirstById(roleId);
     }
 
@@ -41,13 +41,13 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public List<Long> getMenuIdArrByRoleId(Long id) {
+    public List<String> getMenuIdArrByRoleId(String id) {
         return roleRelationMenuRepository.getMenuIdsByRoleId(id);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void assignPermissions(Long roleId, List<Long> allMenuIds) {
+    public void assignPermissions(String roleId, List<String> allMenuIds) {
         roleRelationMenuRepository.deleteByRoleId(roleId);
         allMenuIds.forEach(menuId -> {
             RoleRelationMenu roleRelationMenu = new RoleRelationMenu();
@@ -59,7 +59,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void saveRole(Role role, Long[] menuIdArr) {
+    public void saveRole(Role role, String[] menuIdArr) {
         if (role.getId() != null && "0".equals(role.getEnabled())) {
             User user = userRepository.findFirstByRoleId(role.getId());
             if (user != null) {
@@ -75,7 +75,7 @@ public class RoleServiceImpl implements RoleService {
         // 如果菜单id列表不为空，将数据插入角色菜单关联表
         if (menuIdArr.length > 0) {
             List<RoleRelationMenu> roleRelationMenus = new ArrayList<>();
-            for (Long menuId : menuIdArr) {
+            for (String menuId : menuIdArr) {
                 RoleRelationMenu roleRelationMenu = new RoleRelationMenu();
                 roleRelationMenu.setRoleId(result.getId());
                 roleRelationMenu.setMenuId(menuId);
@@ -87,8 +87,8 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void batchDeleteByIds(Long[] ids) {
-        for (Long id : ids) {
+    public void batchDeleteByIds(String[] ids) {
+        for (String id : ids) {
             User user = userRepository.findFirstByRoleId(id);
             if (user != null) {
                 throw new BusinessRuntimeException("批量删除的角色列表中有用户,不可删除！");

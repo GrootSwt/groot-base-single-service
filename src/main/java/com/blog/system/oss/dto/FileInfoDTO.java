@@ -11,7 +11,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class FileInfoDTO implements Serializable {
 
-    private Long id;
+    private String id;
 
     private String fileName;
 
@@ -19,7 +19,7 @@ public class FileInfoDTO implements Serializable {
 
     private String filePath;
 
-    private Long fileSize;
+    private String fileSize;
 
     private String filesId;
 }

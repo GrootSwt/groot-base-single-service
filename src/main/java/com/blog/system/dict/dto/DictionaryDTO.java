@@ -12,7 +12,7 @@ import java.util.Date;
 public class DictionaryDTO {
 
 
-    private Long id;
+    private String id;
     /**
      * 数据字典key
      */
@@ -32,11 +32,11 @@ public class DictionaryDTO {
     /**
      * 数据字典分类id
      */
-    private Long categoryId;
+    private String categoryId;
     /**
      * 父级数据字典id
      */
-    private Long parentId;
+    private String parentId;
     /**
      * 创建时间
      */

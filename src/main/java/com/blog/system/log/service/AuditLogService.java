@@ -27,5 +27,5 @@ public interface AuditLogService {
      * @param idArr 日志id数组
      * @return  操作是否成功
      */
-    void batchDelete(Long[] idArr);
+    void batchDelete(String[] idArr);
 }

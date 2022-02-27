@@ -39,7 +39,7 @@ public class Menu extends BaseModel {
     /**
      * 父菜单id
      */
-    private Long parentId;
+    private String parentId;
     /**
      * 类型（1：菜单；2：权限）
      */

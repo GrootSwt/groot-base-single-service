@@ -42,7 +42,7 @@ public class MenuServiceImpl implements MenuService {
 
         List<MenuDTO> menuDTOList = menuConvertor.toListDTO(allMenuList);
         MenuDTO menuDTO = new MenuDTO();
-        this.menuListToMap(menuDTO, menuDTOList, 0L);
+        this.menuListToMap(menuDTO, menuDTOList, "0");
         return menuDTO.getChildren();
     }
 
@@ -53,7 +53,7 @@ public class MenuServiceImpl implements MenuService {
      * @param menuDTOList 菜单列表
      * @param pId         父Id
      */
-    private void menuListToMap(MenuDTO menuDTO, List<MenuDTO> menuDTOList, Long pId) {
+    private void menuListToMap(MenuDTO menuDTO, List<MenuDTO> menuDTOList, String pId) {
         List<MenuDTO> menus = new ArrayList<>();
         menuDTOList.forEach(menu -> {
             if (menu.getParentId().equals(pId)) {
@@ -64,14 +64,14 @@ public class MenuServiceImpl implements MenuService {
         menuDTO.setChildren(menus);
     }
 
-    public List<MenuDTO> getMapMenusByRoleId(Long roleId) {
+    public List<MenuDTO> getMapMenusByRoleId(String roleId) {
         List<RoleRelationMenu> allByRoleId = roleRelationMenuRepository.findAllByRoleId(roleId);
-        List<Long> roleIds = new ArrayList<>();
+        List<String> roleIds = new ArrayList<>();
         allByRoleId.forEach(roleRelationMenu -> roleIds.add(roleRelationMenu.getMenuId()));
         List<Menu> menuList = menuRepository.findAllByIdInAndEnabledAndTypeOrderBySort(roleIds, "1", "1");
         List<MenuDTO> menuDTOList = menuConvertor.toListDTO(menuList);
         MenuDTO menuDTO = new MenuDTO();
-        this.menuListToMap(menuDTO, menuDTOList, 0L);
+        this.menuListToMap(menuDTO, menuDTOList, "0");
         return menuDTO.getChildren();
     }
 
@@ -81,7 +81,7 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public Menu getMenuByMenuId(Long menuId) {
+    public Menu getMenuByMenuId(String menuId) {
         return menuRepository.findFirstById(menuId);
     }
 
@@ -106,7 +106,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void deleteMenuByIdArr(Long[] idArr) {
+    public void deleteMenuByIdArr(String[] idArr) {
         menuRepository.deleteMenuByIdArr(idArr);
 
     }
@@ -116,15 +116,15 @@ public class MenuServiceImpl implements MenuService {
         List<Menu> allMenuList = menuRepository.findAllByEnabledOrderBySort("1");
         List<MenuDTO> menuDTOList = menuConvertor.toListDTO(allMenuList);
         MenuDTO menuDTO = new MenuDTO();
-        this.menuListToMap(menuDTO, menuDTOList, 0L);
+        this.menuListToMap(menuDTO, menuDTOList, "0");
         return menuDTO.getChildren();
     }
 
     @Override
-    public List<String> getAuthorityByRoleId(Long roleId) {
+    public List<String> getAuthorityByRoleId(String roleId) {
         List<String> authorities = new ArrayList<>();
         List<RoleRelationMenu> roleRelationMenus = roleRelationMenuRepository.findAllByRoleId(roleId);
-        List<Long> menuIds = new ArrayList<>();
+        List<String> menuIds = new ArrayList<>();
         for (RoleRelationMenu roleRelationMenu : roleRelationMenus) {
             menuIds.add(roleRelationMenu.getMenuId());
         }

@@ -11,7 +11,7 @@ import java.util.Date;
 @ToString
 public class DictionaryCategoryDTO {
 
-    private Long id;
+    private String id;
 
     /**
      * 数据字典分类名称

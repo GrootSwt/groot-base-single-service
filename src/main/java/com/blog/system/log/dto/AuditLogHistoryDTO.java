@@ -16,7 +16,7 @@ public class AuditLogHistoryDTO {
     /**
      * 主键
      */
-    private Long id;
+    private String id;
 
     /**
      * 用户名

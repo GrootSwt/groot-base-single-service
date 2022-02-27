@@ -33,7 +33,7 @@ public class DictionaryCategoryServiceImpl implements DictionaryCategoryService 
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void batchDelete(Long[] idArr) {
+    public void batchDelete(String[] idArr) {
         // 根据类别id集合删除数据字典
         dictionaryRepository.deleteAllByCategoryIdIn(Arrays.asList(idArr));
         dictionaryCategoryRepository.deleteAllByIdIn(Arrays.asList(idArr));

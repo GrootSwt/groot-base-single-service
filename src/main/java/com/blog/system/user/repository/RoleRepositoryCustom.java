@@ -22,7 +22,7 @@ public interface RoleRepositoryCustom {
      *
      * @param ids 角色id列表
      */
-    void batchDeleteByIds(Long[] ids);
+    void batchDeleteByIds(String[] ids);
 
     /**
      * 根据角色名模糊插叙角色Id列表
@@ -30,7 +30,7 @@ public interface RoleRepositoryCustom {
      * @param roleName 角色名
      * @return 角色Id列表
      */
-    List<Long> findRoleIdsByRoleName(String roleName);
+    List<String> findRoleIdsByRoleName(String roleName);
 
 
     /**

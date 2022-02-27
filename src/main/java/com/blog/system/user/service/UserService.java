@@ -53,7 +53,7 @@ public interface UserService {
      *
      * @param idArr 用户ids
      */
-    void batchDelete(Long[] idArr);
+    void batchDelete(String[] idArr);
 
     /**
      * 根据id获取用户
@@ -105,7 +105,7 @@ public interface UserService {
 
     boolean loginNameIsExist(String loginName);
 
-    boolean phoneNumberIsExist(Long id, String phoneNumber);
+    boolean phoneNumberIsExist(String id, String phoneNumber);
 
-    boolean emailIsExist(Long id, String email);
+    boolean emailIsExist(String id, String email);
 }

@@ -47,7 +47,7 @@ public class UserController {
      */
     @ApiOperation(value = "批量删除用户操作")
     @DeleteMapping(value = "batchDelete")
-    public ResultDTO<Void> batchDelete(Long[] idArr) {
+    public ResultDTO<Void> batchDelete(String[] idArr) {
         userService.batchDelete(idArr);
         return ResultDTO.success("批量删除成功！");
     }
@@ -133,14 +133,14 @@ public class UserController {
 
     @ApiOperation(value = "判断联系方式是否存在")
     @GetMapping(value = "phoneNumberIsExist")
-    public ResultDTO<Boolean> phoneNumberIsExist(@RequestParam String phoneNumber,@RequestParam(required = false) Long id) {
+    public ResultDTO<Boolean> phoneNumberIsExist(@RequestParam String phoneNumber,@RequestParam(required = false) String id) {
         boolean exist = userService.phoneNumberIsExist(id, phoneNumber);
         return ResultDTO.success("获取账号是否存在成功！", exist);
     }
 
     @ApiOperation(value = "判断联系方式是否存在")
     @GetMapping(value = "emailIsExist")
-    public ResultDTO<Boolean> emailIsExist(@RequestParam String email, @RequestParam(required = false) Long id) {
+    public ResultDTO<Boolean> emailIsExist(@RequestParam String email, @RequestParam(required = false) String id) {
         boolean exist = userService.emailIsExist(id, email);
         return ResultDTO.success("获取账号是否存在成功！", exist);
     }

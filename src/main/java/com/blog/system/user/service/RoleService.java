@@ -16,7 +16,7 @@ public interface RoleService {
      * @param roleId 角色Id
      * @return 角色
      */
-    Role findFirstById(Long roleId);
+    Role findFirstById(String roleId);
 
     /**
      * 根据查询和分页条件获取角色列表
@@ -33,7 +33,7 @@ public interface RoleService {
      * @param id 角色Id
      * @return 菜单列表Id
      */
-    List<Long> getMenuIdArrByRoleId(Long id);
+    List<String> getMenuIdArrByRoleId(String id);
 
     /**
      * 角色分配权限
@@ -41,21 +41,21 @@ public interface RoleService {
      * @param roleId     角色Id
      * @param allMenuIds 菜单Id列表
      */
-    void assignPermissions(Long roleId, List<Long> allMenuIds);
+    void assignPermissions(String roleId, List<String> allMenuIds);
 
     /**
      * 保存角色
      *
      * @param toModel 角色
      */
-    void saveRole(Role toModel, Long[] menuIdArr);
+    void saveRole(Role toModel, String[] menuIdArr);
 
     /**
      * 批量删除角色
      *
      * @param ids 角色id列表
      */
-    void batchDeleteByIds(Long[] ids);
+    void batchDeleteByIds(String[] ids);
 
     /**
      * 获取全部启用角色

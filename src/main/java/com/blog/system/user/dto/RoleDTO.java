@@ -11,7 +11,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class RoleDTO implements Serializable {
 
-    private Long id;
+    private String id;
 
     private String name;
 
@@ -19,5 +19,5 @@ public class RoleDTO implements Serializable {
 
     private String enabled;
 
-    private Long[] menuIdArr;
+    private String[] menuIdArr;
 }

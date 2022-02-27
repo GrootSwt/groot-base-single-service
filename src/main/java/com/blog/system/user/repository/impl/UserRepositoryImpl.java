@@ -24,7 +24,7 @@ public class UserRepositoryImpl extends BaseRepository implements UserRepository
             where.and(user.username.like("%" + searchData.getStringValue("username") + "%"));
         }
         if (searchData.hasKey("roleIds")) {
-            where.and(user.roleId.in(searchData.getLongArrayValue("roleIds")));
+            where.and(user.roleId.in(searchData.getStringArrayValue("roleIds")));
         }
         JPAQuery<User> query = queryFactory.selectFrom(user).where(where);
         return this.search(query, pageable);

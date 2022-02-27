@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public class RoleRelationMenuRepositoryImpl extends BaseRepository implements RoleRelationMenuRepositoryCustom {
     @Override
-    public List<Long> getMenuIdsByRoleId(Long roleId) {
+    public List<String> getMenuIdsByRoleId(String roleId) {
         QRoleRelationMenu roleRelationMenu = QRoleRelationMenu.roleRelationMenu;
         return queryFactory
                 .select(roleRelationMenu.menuId)

@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 public class MenuDTO implements Serializable {
 
-    private Long id;
+    private String id;
 
     private String title;
 
@@ -24,7 +24,7 @@ public class MenuDTO implements Serializable {
 
     private String enabled;
 
-    private Long parentId;
+    private String parentId;
 
     private String type;
 

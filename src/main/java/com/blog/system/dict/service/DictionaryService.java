@@ -15,7 +15,7 @@ public interface DictionaryService {
 
     void modifyEnabled(Dictionary toModel);
 
-    void batchDelete(Long[] ids);
+    void batchDelete(String[] ids);
 
     List<Dictionary> conditionSearch(SearchData searchData);
 }

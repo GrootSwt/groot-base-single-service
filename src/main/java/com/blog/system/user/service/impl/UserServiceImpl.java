@@ -83,7 +83,7 @@ public class UserServiceImpl implements UserService {
     public ResultPageDTO<UserDTO> pageableSearch(Pageable pageable, SearchData searchData) {
         // 根据查询条件中的角色名查询角色Id
         if (searchData.hasKey("roleName")) {
-            List<Long> roleIds = roleRepository.findRoleIdsByRoleName(searchData.getStringValue("roleName"));
+            List<String> roleIds = roleRepository.findRoleIdsByRoleName(searchData.getStringValue("roleName"));
             searchData.put("roleIds", roleIds);
         }
         Page<User> userPage = userRepository.pageableSearch(pageable, searchData);
@@ -101,7 +101,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void batchDelete(Long[] idArr) {
+    public void batchDelete(String[] idArr) {
         userRepository.deleteByIdIn(Arrays.asList(idArr));
     }
 
@@ -128,10 +128,13 @@ public class UserServiceImpl implements UserService {
     @Transactional(rollbackFor = Exception.class)
     public void changePassword(ChangePasswordBean changePasswordBean) {
         User user = userRepository.findFirstById(changePasswordBean.getId());
+        // 旧密码加密并比较
         String oldPassword = EncryptionUtil.getMD5(changePasswordBean.getOldPassword());
         if (!user.getPassword().equals(oldPassword)) {
             throw new BusinessRuntimeException("原密码错误！");
         }
+        // 新密码加密
+        changePasswordBean.setNewPassword(EncryptionUtil.getMD5(changePasswordBean.getNewPassword()));
         userRepository.changePassword(changePasswordBean);
     }
 
@@ -184,7 +187,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean phoneNumberIsExist(Long id, String phoneNumber) {
+    public boolean phoneNumberIsExist(String id, String phoneNumber) {
         User user = userRepository.findFirstByPhoneNumber(phoneNumber);
         // 编辑时判断id是否相同
         if (user == null) {
@@ -197,7 +200,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean emailIsExist(Long id, String email) {
+    public boolean emailIsExist(String id, String email) {
         User user = userRepository.findFirstByEmail(email);
         // 编辑时判断id是否相同
         if (user == null) {
@@ -216,7 +219,7 @@ public class UserServiceImpl implements UserService {
      * @param roleList 角色列表
      * @return 角色名
      */
-    private String getRoleNameById(Long id, List<Role> roleList) {
+    private String getRoleNameById(String id, List<Role> roleList) {
         Optional<Role> roleOptional = roleList.stream().filter(role -> role.getId().equals(id)).findFirst();
         if (roleOptional.isPresent()) {
             return roleOptional.get().getName();

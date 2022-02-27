@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 菜单Repository
  */
-public interface MenuRepository extends JpaRepository<Menu, Long>, MenuRepositoryCustom {
+public interface MenuRepository extends JpaRepository<Menu, String>, MenuRepositoryCustom {
 
     /**
      * 排序查询所有菜单
@@ -31,7 +31,7 @@ public interface MenuRepository extends JpaRepository<Menu, Long>, MenuRepositor
      * @param menuIds 菜单Id列表
      * @return 菜单列表
      */
-    List<Menu> findAllByIdInAndEnabledAndTypeOrderBySort(List<Long> menuIds, String enabled, String type);
+    List<Menu> findAllByIdInAndEnabledAndTypeOrderBySort(List<String> menuIds, String enabled, String type);
 
     /**
      * 根据菜单Id获取菜单
@@ -39,7 +39,7 @@ public interface MenuRepository extends JpaRepository<Menu, Long>, MenuRepositor
      * @param menuId 菜单Id
      * @return 菜单
      */
-    Menu findFirstById(Long menuId);
+    Menu findFirstById(String menuId);
 
     /**
      * 获取全部启用菜单
@@ -64,7 +64,7 @@ public interface MenuRepository extends JpaRepository<Menu, Long>, MenuRepositor
      * @param parentId 父菜单id
      * @return 子菜单列表
      */
-    List<Menu> findAllByParentIdOrderBySort(Long parentId);
+    List<Menu> findAllByParentIdOrderBySort(String parentId);
 
     Menu findFirstByLocation(String location);
 }

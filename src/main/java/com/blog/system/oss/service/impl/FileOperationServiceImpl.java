@@ -48,7 +48,7 @@ public class FileOperationServiceImpl implements FileOperationService {
     }
 
     @Override
-    public void download(Long id, HttpServletResponse response) throws IOException {
+    public void download(String id, HttpServletResponse response) throws IOException {
         FileInfo fileInfo = fileInfoRepository.findFirstById(id);
         if (fileInfo == null) {
             throw new BusinessRuntimeException("文件不存在！");
@@ -84,7 +84,7 @@ public class FileOperationServiceImpl implements FileOperationService {
     }
 
     @Override
-    public FileInfo getFileInfoById(Long id) {
+    public FileInfo getFileInfoById(String id) {
         FileInfo fileInfo = fileInfoRepository.findFirstById(id);
         if (fileInfo == null) {
             throw new BusinessRuntimeException("文件不存在！");
@@ -93,12 +93,12 @@ public class FileOperationServiceImpl implements FileOperationService {
     }
 
     @Override
-    public List<FileInfo> listFileInfoByIdArr(Long[] idArr) {
+    public List<FileInfo> listFileInfoByIdArr(String[] idArr) {
         return fileInfoRepository.findAllById(Arrays.asList(idArr));
     }
 
     @Override
-    public void deleteFileById(Long id) {
+    public void deleteFileById(String id) {
         FileInfo fileInfo = fileInfoRepository.findFirstById(id);
         if (fileInfo == null) {
             throw new BusinessRuntimeException("将要删除的文件不存在！");
@@ -107,7 +107,7 @@ public class FileOperationServiceImpl implements FileOperationService {
     }
 
     @Override
-    public void deleteFileListByIdArr(Long[] idArr) {
+    public void deleteFileListByIdArr(String[] idArr) {
         List<FileInfo> fileInfoList = fileInfoRepository.findAllById(Arrays.asList(idArr));
         fileInfoList.forEach(this::deleteFileAndInfo);
     }
@@ -118,7 +118,7 @@ public class FileOperationServiceImpl implements FileOperationService {
     }
 
     @Override
-    public List<Long> getFileIdListByFilesId(String filesId) {
+    public List<String> getFileIdListByFilesId(String filesId) {
         return fileInfoRepository.getFileIdListByFilesId(filesId);
     }
 

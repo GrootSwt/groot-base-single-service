@@ -41,11 +41,11 @@ public class User extends BaseModel {
     /**
      * 角色id
      */
-    private Long roleId;
+    private String roleId;
     /**
      * 头像id
      */
-    private Long avatar;
+    private String avatar;
     /**
      * 启用（0：未启用；1：启用）
      */

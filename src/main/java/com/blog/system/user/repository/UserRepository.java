@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Collection;
 
-public interface UserRepository extends JpaRepository<User, Long>, UserRepositoryCustom {
+public interface UserRepository extends JpaRepository<User, String>, UserRepositoryCustom {
 
     /**
      * 根据账号查询用户信息
@@ -30,7 +30,7 @@ public interface UserRepository extends JpaRepository<User, Long>, UserRepositor
      *
      * @param idArr 用户ids
      */
-    void deleteByIdIn(Collection<Long> idArr);
+    void deleteByIdIn(Collection<String> idArr);
 
     /**
      * 根据id查询用户
@@ -38,7 +38,7 @@ public interface UserRepository extends JpaRepository<User, Long>, UserRepositor
      * @param id 用户id
      * @return 用户信息
      */
-    User findFirstById(Long id);
+    User findFirstById(String id);
 
     /**
      * 根据角色id查询第一个用户
@@ -46,7 +46,7 @@ public interface UserRepository extends JpaRepository<User, Long>, UserRepositor
      * @param roleId 角色id
      * @return 查找到的第一个用户或者null
      */
-    User findFirstByRoleId(Long roleId);
+    User findFirstByRoleId(String roleId);
 
 
     User findFirstByLoginName(String loginName);

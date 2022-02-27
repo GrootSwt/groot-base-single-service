@@ -31,7 +31,7 @@ public class AuditLogServiceImpl implements AuditLogService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void batchDelete(Long[] idArr) {
+    public void batchDelete(String[] idArr) {
         auditLogRepository.deleteAllByIdIn(Arrays.asList(idArr));
     }
 }

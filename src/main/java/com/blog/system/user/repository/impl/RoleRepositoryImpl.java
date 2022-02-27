@@ -28,13 +28,13 @@ public class RoleRepositoryImpl extends BaseRepository implements RoleRepository
     }
 
     @Override
-    public void batchDeleteByIds(Long[] ids) {
+    public void batchDeleteByIds(String[] ids) {
         QRole role = QRole.role;
         queryFactory.delete(role).where(role.id.in(ids)).execute();
     }
 
     @Override
-    public List<Long> findRoleIdsByRoleName(String roleName) {
+    public List<String> findRoleIdsByRoleName(String roleName) {
         QRole role = QRole.role;
         return queryFactory.select(role.id).from(role).where(role.name.like("%" + roleName + "%")).fetch();
     }

@@ -5,9 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface FileInfoRepository extends JpaRepository<FileInfo, Long> ,FileInfoRepositoryCustom{
+public interface FileInfoRepository extends JpaRepository<FileInfo, String> ,FileInfoRepositoryCustom{
 
-    FileInfo findFirstById(Long id);
+    FileInfo findFirstById(String id);
 
     List<FileInfo> findAllByFilesId(String filesId);
 

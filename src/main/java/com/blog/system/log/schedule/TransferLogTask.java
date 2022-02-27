@@ -33,7 +33,7 @@ public class TransferLogTask {
         log.info("日志转移开始");
         List<AuditLog> auditLogs = auditLogRepository.getAllByResolved(true);
         List<AuditLogHistory> auditLogHistories = new ArrayList<>();
-        List<Long> ids = new ArrayList<>();
+        List<String> ids = new ArrayList<>();
         auditLogs.forEach(item -> {
             AuditLogHistory history = new AuditLogHistory();
             BeanUtils.copyProperties(item, history);

@@ -11,7 +11,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class UserDTO implements Serializable {
 
-    private Long id;
+    private String id;
 
     private String username;
 
@@ -23,9 +23,9 @@ public class UserDTO implements Serializable {
 
     private String email;
 
-    private Long avatar;
+    private String avatar;
 
-    private Long roleId;
+    private String roleId;
 
     private String roleName;
 

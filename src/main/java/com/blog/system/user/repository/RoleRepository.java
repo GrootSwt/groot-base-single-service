@@ -4,14 +4,14 @@ package com.blog.system.user.repository;
 import com.blog.system.user.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RoleRepository extends JpaRepository<Role, Long>, RoleRepositoryCustom {
+public interface RoleRepository extends JpaRepository<Role, String>, RoleRepositoryCustom {
     /**
      * 根据Id查询角色
      *
      * @param roleId 角色Id
      * @return 角色
      */
-    Role findFirstById(Long roleId);
+    Role findFirstById(String roleId);
 
     /**
      * 获取第一个角色名相同的角色

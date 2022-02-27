@@ -43,7 +43,7 @@ public class AuditLogController {
 
     @ApiOperation(value = "日志批量删除")
     @DeleteMapping(value = "batchDelete")
-    public ResultDTO<Void> batchDelete(@RequestParam Long[] idArr) {
+    public ResultDTO<Void> batchDelete(@RequestParam String[] idArr) {
         auditLogService.batchDelete(idArr);
         return ResultDTO.success("日志批量删除成功！");
     }

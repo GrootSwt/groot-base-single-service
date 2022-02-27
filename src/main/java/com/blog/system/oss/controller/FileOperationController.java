@@ -48,7 +48,7 @@ public class FileOperationController {
      */
     @ApiOperation(value = "文件下载")
     @GetMapping(value = "download/{id}")
-    public void download(@PathVariable Long id, HttpServletResponse response) throws IOException {
+    public void download(@PathVariable String id, HttpServletResponse response) throws IOException {
         fileOperationService.download(id, response);
     }
 
@@ -60,7 +60,7 @@ public class FileOperationController {
      */
     @ApiOperation(value = "获取文件信息")
     @GetMapping(value = "{id}/getFileInfoById")
-    public ResultDTO<FileInfoDTO> getFileInfoById(@PathVariable Long id) {
+    public ResultDTO<FileInfoDTO> getFileInfoById(@PathVariable String id) {
         FileInfo fileInfo = fileOperationService.getFileInfoById(id);
         return ResultDTO.success("获取文件信息成功！", fileInfoConvertor.toDTO(fileInfo));
     }
@@ -73,7 +73,7 @@ public class FileOperationController {
      */
     @ApiOperation(value = "获取文件列表信息")
     @GetMapping(value = "listFileInfoByIdArr")
-    public ResultListDTO<FileInfoDTO> listFileInfoByIdArr(@RequestParam Long[] idArr) {
+    public ResultListDTO<FileInfoDTO> listFileInfoByIdArr(@RequestParam String[] idArr) {
         List<FileInfo> fileInfoList = fileOperationService.listFileInfoByIdArr(idArr);
         return ResultListDTO.success("获取文件信息成功！", fileInfoConvertor.toListDTO(fileInfoList));
     }
@@ -86,7 +86,7 @@ public class FileOperationController {
      */
     @ApiOperation(value = "根据文件信息id删除文件和文件信息")
     @DeleteMapping(value = "{id}/deleteFileById")
-    public ResultDTO<Void> deleteFileById(@PathVariable Long id) {
+    public ResultDTO<Void> deleteFileById(@PathVariable String id) {
         fileOperationService.deleteFileById(id);
         return ResultDTO.success("文件删除成功！");
     }
@@ -99,7 +99,7 @@ public class FileOperationController {
      */
     @ApiOperation(value = "根据文件信息id列表批量删除文件和文件信息")
     @DeleteMapping(value = "deleteFileListByIdArr")
-    public ResultDTO<Void> deleteFileListByIdArr(@RequestParam Long[] idArr) {
+    public ResultDTO<Void> deleteFileListByIdArr(@RequestParam String[] idArr) {
         fileOperationService.deleteFileListByIdArr(idArr);
         return ResultDTO.success("文件删除成功！");
     }
@@ -125,8 +125,8 @@ public class FileOperationController {
      */
     @ApiOperation(value = "根据filesId获取file id列表")
     @GetMapping(value = "{filesId}/getFileIdList")
-    public ResultListDTO<Long> getFileIdListByFilesId(@PathVariable String filesId) {
-        List<Long> fileIdList = fileOperationService.getFileIdListByFilesId(filesId);
+    public ResultListDTO<String> getFileIdListByFilesId(@PathVariable String filesId) {
+        List<String> fileIdList = fileOperationService.getFileIdListByFilesId(filesId);
         return ResultListDTO.success("获取文件id列表成功！", fileIdList);
     }
 

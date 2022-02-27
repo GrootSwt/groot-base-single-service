@@ -24,7 +24,7 @@ public interface MenuService {
      * @param roleId 角色Id
      * @return Map结构菜单列表
      */
-    List<MenuDTO> getMapMenusByRoleId(Long roleId);
+    List<MenuDTO> getMapMenusByRoleId(String roleId);
 
     /**
      * 条件分页查询菜单
@@ -41,7 +41,7 @@ public interface MenuService {
      * @param menuId 菜单Id
      * @return 菜单
      */
-    Menu getMenuByMenuId(Long menuId);
+    Menu getMenuByMenuId(String menuId);
 
     /**
      * 保存菜单
@@ -56,7 +56,7 @@ public interface MenuService {
      *
      * @param idArr id列表
      */
-    void deleteMenuByIdArr(Long[] idArr);
+    void deleteMenuByIdArr(String[] idArr);
 
     /**
      * 获取全部启用的菜单
@@ -71,7 +71,7 @@ public interface MenuService {
      * @param roleId 角色id
      * @return 操作权限列表
      */
-    List<String> getAuthorityByRoleId(Long roleId);
+    List<String> getAuthorityByRoleId(String roleId);
 
     /**
      * 判断将要新增的路径是否存在

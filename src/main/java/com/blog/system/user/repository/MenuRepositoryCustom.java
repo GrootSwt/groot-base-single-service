@@ -22,6 +22,6 @@ public interface MenuRepositoryCustom {
      *
      * @param idArr id列表
      */
-    void deleteMenuByIdArr(Long[] idArr);
+    void deleteMenuByIdArr(String[] idArr);
 
 }

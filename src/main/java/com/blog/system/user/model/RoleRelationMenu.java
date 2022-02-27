@@ -19,9 +19,9 @@ public class RoleRelationMenu extends BaseModel {
     /**
      * 角色id
      */
-    private Long roleId;
+    private String roleId;
     /**
      * 菜单、权限id
      */
-    private Long menuId;
+    private String menuId;
 }

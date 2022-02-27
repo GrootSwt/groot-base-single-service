@@ -52,7 +52,7 @@ public class DictionaryCategoryController {
 
     @ApiOperation(value = "批量删除")
     @DeleteMapping(value = "batchDelete")
-    public ResultDTO<Void> batchDelete(@RequestParam Long[] idArr) {
+    public ResultDTO<Void> batchDelete(@RequestParam String[] idArr) {
         dictionaryCategoryService.batchDelete(idArr);
         return ResultDTO.success("删除操作成功！");
     }

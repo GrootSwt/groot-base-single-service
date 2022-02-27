@@ -11,19 +11,19 @@ import java.util.List;
 public interface FileOperationService {
     List<FileInfo> upload(HttpServletRequest request);
 
-    void download(Long id, HttpServletResponse response) throws BusinessRuntimeException, IOException;
+    void download(String id, HttpServletResponse response) throws BusinessRuntimeException, IOException;
 
-    FileInfo getFileInfoById(Long id) throws BusinessRuntimeException;
+    FileInfo getFileInfoById(String id) throws BusinessRuntimeException;
 
-    List<FileInfo> listFileInfoByIdArr(Long[] idArr);
+    List<FileInfo> listFileInfoByIdArr(String[] idArr);
 
-    void deleteFileById(Long id) throws BusinessRuntimeException;
+    void deleteFileById(String id) throws BusinessRuntimeException;
 
-    void deleteFileListByIdArr(Long[] idArr);
+    void deleteFileListByIdArr(String[] idArr);
 
     List<FileInfo> getFileListByFilesId(String filesId);
 
-    List<Long> getFileIdListByFilesId(String filesId);
+    List<String> getFileIdListByFilesId(String filesId);
 
     void deleteFilesByFilesId(String filesId);
 }
