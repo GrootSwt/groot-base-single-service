@@ -20,17 +20,17 @@ spring:
     username: admin
     port: 5672
   application:
-    name: single-blog
+    name: groot-base-single-service
 
 groot:
   # 登录拦截器是否开启
   login-interceptor: true
   swagger:
-    base-package: com.blog
+    base-package: com.groot.base
   rabbit-mq:
-    exchange-name: single-blog
-    queue-name: single-blog
-    routing-key: single-blog
+    exchange-name: groot-base-single-service
+    queue-name: groot-base-single-service
+    routing-key: groot-base-single-service
   login:
     # redis中用户token过期时间（min）
     expire-time: 30

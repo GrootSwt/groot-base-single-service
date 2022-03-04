@@ -8,11 +8,11 @@
         <version>2.2.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.blog</groupId>
-    <artifactId>single-blog</artifactId>
+    <groupId>com.groot.base</groupId>
+    <artifactId>groot-base-single-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>single-blog</name>
-    <description>single-blog</description>
+    <name>groot-base-single-service</name>
+    <description>groot-base-single-service</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
